@@ -35,6 +35,16 @@
         m.redirect("add_product.jsp");
         return;
     }
+    ListManager lm = new ListManager();
+    lm.setRequest(request);
+    lm.setTable("tb_category a JOIN tb_product b ON b.categoryid = a.category_id");
+    lm.addWhere("b.status = 1");
+    lm.setFields("a.* , b.*");
+    lm.setListNum(5);
+    p.setVar("total_cnt", lm.getTotalNum());
+    p.setVar("pagebar", lm.getPaging());
+    p.setLoop("list" , lm.getDataSet());
+    DataSet list = lm.getDataSet();
     DataSet cat = category.find("status = 1 ");
     p.setLoop("cat" , cat);
     p.setLayout("shop");

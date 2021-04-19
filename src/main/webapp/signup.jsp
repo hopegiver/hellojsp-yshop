@@ -1,5 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %><%@include file="init.jsp"%><%
     UserDao user = new UserDao();
+    String isAdmin = "0";
+    if(is_admin != 0){
+        isAdmin = "1";
+    }
     f.addElement("name",null,"required:'Y'");
     f.addElement("password",null,"required:'Y'");
     f.addElement("email",null,"required:'Y',option:'email'");
@@ -17,6 +21,7 @@
             m.redirect("login.jsp");
         }
     }
+    p.setVar("isAdmin",isAdmin);
     p.setLayout("shop");
     p.setBody("user/signup");
     p.print();

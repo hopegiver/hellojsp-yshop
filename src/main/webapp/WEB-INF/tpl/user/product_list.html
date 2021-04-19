@@ -83,7 +83,9 @@
 
     var treeview2 = new TreeView({
         autoOpen : false,
-        multiSelectable : true,
+        onClick : function(node) {
+            window.location = "product_list.jsp?id=" + node.id;
+        }
     });
 
     <!--#foreach($item in $cattree)-->

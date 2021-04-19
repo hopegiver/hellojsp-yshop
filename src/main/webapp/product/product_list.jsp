@@ -23,6 +23,10 @@
     lm.setTable("tb_product t");
     lm.setFields("t.*");
     lm.addWhere("status = 1");
+    int cat_id = m.reqInt("id");
+    if(cat_id != 0){
+    lm.addWhere("categoryid = " + cat_id );
+    }
     lm.setListNum(6);
     p.setLoop("list" , lm.getDataSet());
     p.setLayout("shop");

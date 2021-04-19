@@ -23,7 +23,14 @@
         m.jsError("id is null");
         return;
     }
-    DataSet info = product.find("product_id="+id);
+    ListManager lm = new ListManager();
+    lm.setRequest(request);
+    lm.setTable("tb_category a JOIN tb_product b ON b.categoryid = a.category_id");
+    lm.addWhere("b.status = 1");
+    lm.addWhere("product_id="+id);
+    lm.setFields("a.*, b.*");
+    DataSet info = lm.getDataSet();
+            //product.find("product_id="+id);
     if(!info.next()){
         m.jsError("product detail view failed");
         return;

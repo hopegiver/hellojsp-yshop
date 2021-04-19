@@ -39,6 +39,12 @@ lm.addWhere("a.parent_id = 0");
 lm.setOrderBy("a.id ASC");
 
 DataSet list = lm.getDataSet();
+// category list
+	ListManager catlist = new ListManager();
+	catlist.setRequest(request);
+	catlist.setTable("tb_category t");
+	catlist.setListNum(5);
+	catlist.addWhere("status = 1");
 
 //Step4
 //p.setDebug(out);
@@ -51,6 +57,9 @@ p.setLayout("shop");
 p.setBody("admin/category/create");
 p.setVar("list", list);
 p.setVar("form_script", f.getScript());
+p.setLoop("categorylist" , catlist.getDataSet());
+p.setVar("total_cnt", catlist.getTotalNum());
+p.setVar("pagebar", catlist.getPaging());
 p.print();
 
 %>
