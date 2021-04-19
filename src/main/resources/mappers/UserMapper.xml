@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="User">
+    <insert id="insert" parameterType="hashmap">
+        insert into tb_user (username, password)
+        values (#{name}, #{pass})
+    </insert>
+    <select id="selectOne" resultType="hashmap">
+        select * from tb_user where id = #{id}
+    </select>
+    <select id="selectAll" resultType="hashmap">
+        select id, username, password FROM tb_user
+    </select>
+    <delete id="delete" parameterType="int">
+        delete from tb_user where id=#{id}
+    </delete>
+</mapper>

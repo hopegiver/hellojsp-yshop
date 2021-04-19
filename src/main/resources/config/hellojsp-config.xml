@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rootElement>
+<config>
+	<env>
+		<dataDir>C:\Project\test\hellojsp-yshop\src\main\webapp\data</dataDir>
+		<mailFrom>postmaster@test.com</mailFrom>
+		<maxFileSize>1024</maxFileSize>
+	</env>
+</config>

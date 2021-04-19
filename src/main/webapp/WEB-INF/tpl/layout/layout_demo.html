@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+    <!-- include common vendor stylesheets -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../css/fontawesome.css">
+    <link rel="stylesheet" type="text/css" href="../css/brands.css">
+    <link rel="stylesheet" type="text/css" href="../css/regular.css">
+    <link rel="stylesheet" type="text/css" href="../css/solid.css">
+    <link rel="stylesheet" type="text/css" href="../css/jqtree.css">
+    <!-- custom css design -->
+    <link rel="stylesheet" type="text/css" href="../css/top.css">
+</head>
+<body>
+    <div class="container">
+        $m.includePage("top.jsp")
+        <div class="main-container">
+            <div class="main-content">
+                #parse($BODY)
+            </div>
+        </div>
+        $m.includePage("footer.jsp")
+    </div>
+</body>
+</html>

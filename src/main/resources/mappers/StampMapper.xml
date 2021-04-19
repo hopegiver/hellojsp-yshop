@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Stamp">
+    <insert id="insert" parameterType="hashmap">
+        insert into tb_stamp (ownername, stampname, level ,explanation , stampimg , usingplace, ownerid )
+        values (#{ownername}, #{stampname} , #{level}, #{explanation},#{stampimg},#{usingplace},#{ownerid})
+    </insert>
+    <select id="selectOne" resultType="hashmap">
+        select * from tb_stamp where id = #{id}
+    </select>
+    <select id="selectAll" resultType="hashmap">
+        select id, username, password FROM tb_stamp
+    </select>
+    <select id="selectByOwnerId" resultType="hashmap">
+        select * from tb_stamp where ownerid=#{id}
+    </select>
+    <delete id="delete" parameterType="int">
+        delete from tb_stamp where stampid=#{id}
+    </delete>
+</mapper>
