@@ -1,16 +1,46 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: DELL
-  Date: 4/15/2021
-  Time: 4:07 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<%@ page contentType="text/html; charset=utf-8" %><%@ include file="../../init.jsp" %><%
 
-</body>
-</html>
+    //Step1
+    ProductDao product = new ProductDao();
+
+//Step2
+    int id = m.reqInt("id");
+    if(id == 0) { m.jsError("Primary Key is required"); return; }
+
+//Step3
+    DataSet info = product.find("product_id = " + id);
+    if(!info.next()) { m.jsError("No Data"); return; }
+
+    f.addElement("id", info.s("product_id"), "title:'ID', required:true");
+
+//Step5
+    if(m.isPost() && f.validate()) {
+
+        if(!"".equals(info.s("att_file_code"))) {
+            m.delFile(f.uploadDir + "/" + info.s("att_file_code"));
+        }
+        product.item("status", -1);
+
+        //blog.setDebug(out);
+        if(!product.update("product_id = " + id)) {
+            m.jsAlert("Error occurred(delete)");
+            return;
+        }
+
+        m.redirect("add_product.jsp");
+        return;
+    }
+
+//Step6
+    String pagetitle = "Product";
+    String pageaction = "delete";
+    p.setVar("pagetitle", pagetitle);
+    p.setVar("pageaction", pageaction);
+    p.setVar("userId", userId);
+    p.setLayout("shop");
+    p.setBody("admin/category/delete");
+    p.setVar("info", info);
+    p.setVar("form_script", f.getScript());
+    p.print();
+
+%>

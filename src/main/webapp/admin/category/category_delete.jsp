@@ -27,7 +27,7 @@ if(m.isPost() && f.validate()) {
 		return;
 	}
 
-	m.redirect("index.jsp");
+	m.redirect("create.jsp");
 	return;
 }
 

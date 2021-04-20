@@ -36,7 +36,7 @@ lm.setTable("tb_category a");
 lm.setFields("a.*");
 lm.addWhere("a.status != -1");
 lm.addWhere("a.parent_id = 0");
-lm.setOrderBy("a.id ASC");
+lm.setOrderBy("a.category_id ASC");
 
 DataSet list = lm.getDataSet();
 // category list
@@ -55,7 +55,7 @@ p.setVar("pageaction", pageaction);
 p.setVar("userId", userId);		
 p.setLayout("shop");
 p.setBody("admin/category/create");
-p.setVar("list", list);
+p.setLoop("list", list);
 p.setVar("form_script", f.getScript());
 p.setLoop("categorylist" , catlist.getDataSet());
 p.setVar("total_cnt", catlist.getTotalNum());
