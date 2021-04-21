@@ -9,6 +9,7 @@
         bag.item("reg_user" , auth.get("user_id"));
         bag.item("reg_date" , m.time("yyyyMMdd"));
         bag.item("count" , 1);
+        bag.item("status" , 1);
         if(bag.insert()){
             m.redirect("product_list.jsp");
         }
