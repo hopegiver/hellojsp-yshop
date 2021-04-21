@@ -103,10 +103,9 @@
                             <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                             #if(${is_logged} == "false")
-                            <li><a href="login.jsp"><i class="fa fa-lock"></i> Login</a></li>
+                            <li><a href="/login.jsp"><i class="fa fa-lock"></i> Login</a></li>
                             #else
-                            <li><a href="mypage.jsp"><i class="fa fa-user"></i> My Page</a></li>
-                            <li><a href="logout.jsp"><i class="fa fa-lock"></i> Log out</a></li>
+                            <li><a href="/logout.jsp"><i class="fa fa-lock"></i> Log out</a></li>
                             #end
                         </ul>
                     </div>
@@ -127,27 +126,7 @@
                             <span class="icon-bar"></span>
                         </button>
                     </div>
-                    <div class="mainmenu pull-left">
-                        <ul class="nav navbar-nav collapse navbar-collapse">
-                            #if(${isAdmin} == "false")
-                            <li><a href="/index.jsp" class="active">Home</a></li>
-                            #else
-                            <li><a href="/admin_index.jsp" class="active">Home</a></li>
-                            #end
-                            <li><a href="/product/product_list.jsp">Product</a></li>
-                            <li><a href="/product/blog_list.jsp">Blog</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="search_box pull-right">
-                        <input type="text" placeholder="Search"/>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div><!--/header-bottom-->
-</header><!--/header-->
+
 #parse($BODY)
 <footer id="footer"><!--Footer-->
     <div class="footer-top">

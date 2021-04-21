@@ -23,6 +23,7 @@
                     m.redirect("admin_index.jsp");
                 }
                 else{
+                    auth.save();
                     m.redirect("index.jsp");
                 }
             }

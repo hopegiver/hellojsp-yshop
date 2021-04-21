@@ -1,3 +1,20 @@
+<div class="mainmenu pull-left">
+    <ul class="nav navbar-nav collapse navbar-collapse">
+        <li><a href="/index.jsp" class="active">Home</a></li>
+        <li><a href="/product/product_list.jsp">Product</a></li>
+        <li><a href="/product/blog_list.jsp">Blog</a></li>
+    </ul>
+</div>
+</div>
+<div class="col-sm-3">
+    <div class="search_box pull-right">
+        <input type="text" placeholder="Search"/>
+    </div>
+</div>
+</div>
+</div>
+</div><!--/header-bottom-->
+</header><!--/header-->
 <section id="slider"><!--slider-->
     <div class="container">
         <div class="row">
@@ -68,14 +85,18 @@
                                 <div class="productinfo text-center">
                                     <img src="/data/files/${item.att_file_code}" alt="" style="height: 257px;"/>
                                     <h2>$ ${item.price}</h2>
-                                    <p>${item.title}</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    <p><a href="product/product_detail.jsp?id=${item.product_id}">
+                                        ${item.title}
+                                    </a></p>
+                                    <a href="product/add_bag.jsp?id=${item.product_id}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                 </div>
                                 <div class="product-overlay">
                                     <div class="overlay-content">
                                         <h2>$ ${item.price}</h2>
-                                        <p>${item.title}</p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        <p><a href="product/product_detail.jsp?id=${item.product_id}">
+                                            ${item.title}
+                                        </a></p>
+                                        <a href="product/add_bag.jsp?id=${item.product_id}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
                                 </div>
                             </div>
