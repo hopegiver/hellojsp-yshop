@@ -1,10 +1,15 @@
 <div class="mainmenu pull-left">
     <ul class="nav navbar-nav collapse navbar-collapse">
         <li><a href="/index.jsp" class="active">Home</a></li>
-        <li><a href="/product/product_list.jsp">Product</a></li>
-        <li><a href="/product/blog_list.jsp">Blog</a></li>
+        <li><a href="/mypage/product_list.jsp">Product</a></li>
+        <li><a href="/mypage/blog_list.jsp">Blog</a></li>
     </ul>
 </div>
+</div>
+<div class="col-sm-3">
+<!--    <div class="search_box pull-right">-->
+<!--        <input type="text" placeholder="Search"/>-->
+<!--    </div>-->
 </div>
 </div>
 </div>
@@ -24,8 +29,8 @@
                                 <button type="button" class="btn btn-default get">Get it now</button>
                             </div>
                             <div class="col-sm-6">
-                                <img src="images/home/girl1.jpg" class="girl img-responsive" alt="" style="width: 500px"/>
-                                <img src="images/home/pricing.png"  class="pricing" alt="" />
+                                <img src="/assets/images/home/girl1.jpg" class="girl img-responsive" alt="" style="width: 500px"/>
+                                <img src="/assets/images/home/pricing.png"  class="pricing" alt="" />
                             </div>
                         </div>
                         <!--#foreach($item in $banner)-->
@@ -38,7 +43,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <img src="/data/files/${item.att_file_code}"  class="girl img-responsive" alt="" style="width: 500px"/>
-                                <img src="images/home/pricing.png"  class="pricing" alt="" />
+                                <img src="/assets/images/home/pricing.png"  class="pricing" alt="" />
                             </div>
                         </div>
                         <!--#end-->
@@ -80,18 +85,19 @@
                                 <div class="productinfo text-center">
                                     <img src="/data/files/${item.att_file_code}" alt="" style="height: 257px;"/>
                                     <h2>$ ${item.price}</h2>
-                                    <p><a href="product/product_detail.jsp?id=${item.product_id}">
+                                    <p><a href="mypage/product_detail.jsp?id=${item.id}">
                                         ${item.title}
                                     </a></p>
-                                    <a href="product/add_card.jsp?id=${item.product_id}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    <a href="mypage/cart_add.jsp?id=${item.id}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                 </div>
                                 <div class="product-overlay">
                                     <div class="overlay-content">
                                         <h2>$ ${item.price}</h2>
-                                        <p><a href="product/product_detail.jsp?id=${item.product_id}">
+                                        <p><a href="mypage/product_detail.jsp?id=${item.id}">
                                             ${item.title}
-                                        </a></p>
-                                        <a href="product/add_card.jsp?id=${item.product_id}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        </a>
+                                        </p>
+                                        <a href="mypage/cart_add.jsp?id=${item.id}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
                                 </div>
                             </div>
@@ -106,14 +112,14 @@
                     <!--#end-->
                 </div><!--features_items-->
                 <div class="row" style="display: flex;justify-content: center;padding-bottom: 28px;}">
-                    <a class="btn btn-default get" href="/product/product_list.jsp">see resume </a>
+                    <a class="btn btn-default get" href="/mypage/product_list.jsp">see resume </a>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<script type="text/javascript" src="../js/tree.jquery.js"></script>
-<script type="text/javascript" src="../js/treeview.js"></script>
+<script type="text/javascript" src="../assets/js/tree.jquery.js"></script>
+<script type="text/javascript" src="../assets/js/treeview.js"></script>
 <script>
 
     var treeview2 = new TreeView({
@@ -123,7 +129,7 @@
         }
     });
 
-    <!--#foreach($item in $cattree)-->
+    <!--#foreach($item in $categories)-->
     treeview2.add('$item.id', '$item.pid', '$item.name');
     <!--#end-->
 

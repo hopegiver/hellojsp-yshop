@@ -1,8 +1,8 @@
 <div class="mainmenu pull-left">
     <ul class="nav navbar-nav collapse navbar-collapse">
         <li><a href="/index.jsp" >Home</a></li>
-        <li><a href="/product/product_list.jsp" class="active">Product</a></li>
-        <li><a href="/product/blog_list.jsp">Blog</a></li>
+        <li><a href="/mypage/product_list.jsp" class="active">Product</a></li>
+        <li><a href="/mypage/blog_list.jsp">Blog</a></li>
     </ul>
 </div>
 </div>
@@ -93,18 +93,18 @@
         </div>
     </div>
 </section>
-<script type="text/javascript" src="../js/tree.jquery.js"></script>
-<script type="text/javascript" src="../js/treeview.js"></script>
+<script type="text/javascript" src="../assets/js/tree.jquery.js"></script>
+<script type="text/javascript" src="../assets/js/treeview.js"></script>
 <script>
 
     var treeview2 = new TreeView({
         autoOpen : false,
         onClick : function(node) {
-            window.location = "product_list.jsp?id=" + node.id;
+            window.location = "product_list.jsp?cid=" + node.id;
         }
     });
 
-    <!--#foreach($item in $cattree)-->
+    <!--#foreach($item in $categories)-->
     treeview2.add('$item.id', '$item.pid', '$item.name');
     <!--#end-->
 

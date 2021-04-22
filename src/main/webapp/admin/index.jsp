@@ -19,11 +19,11 @@
     int id = m.reqInt("id");
     int del = m.reqInt("del");
 
-    DataSet info = category.find("category_id = " + id);
+    DataSet info = category.find("id = " + id);
     if(id != 0) {
         if(del != 0){
             category.item("status", -1);
-            category.update("category_id = " + id);
+            category.update("id = " + id);
 
             m.redirect("index.jsp");
             return;
@@ -44,7 +44,7 @@
                 category.item("sort", f.get("sort"));
 
                 //blog.setDebug(out);
-                if(!category.update("category_id = " + id)) {
+                if(!category.update("id = " + id)) {
                     m.jsAlert("Error occurred(update)");
                     return;
                 }
@@ -55,7 +55,7 @@
                 category.item("status", -1);
 
                 //blog.setDebug(out);
-                if(!category.update("category_id = " + id)) {
+                if(!category.update("id = " + id)) {
                     m.jsAlert("Error occurred(delete)");
                     return;
                 }
@@ -100,7 +100,7 @@
 
     //    p.setDebug(out);
     p.setLayout("shop");
-    p.setBody("admin/category/index");
+    p.setBody("category/index");
     p.setVar("id", id);
     p.setLoop("list", catInfo);
     p.setLoop("sublist", subCat);

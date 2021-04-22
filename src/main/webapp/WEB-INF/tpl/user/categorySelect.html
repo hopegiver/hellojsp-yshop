@@ -16,7 +16,7 @@
     #foreach($item in $list)
     <tr class="bgc-h-default-l3 ">
         <td>
-            <label><input type="checkbox" name="category" onclick="getcat();" id="${item.category_name}" value="${item.id}" #foreach($cat in $cats) #if($cat.category_id == $item.id) checked  #end #end > ${item.category_name} </label>
+            <label><input type="checkbox" name="category" onclick="getcat();" id="${item.category_name}" value="${item.id}" #foreach($cat in $cats) #if($cat.id == $item.id) checked  #end #end > ${item.category_name} </label>
         </td>
 
     </tr>
@@ -24,7 +24,7 @@
     #if($subitem.parent_id == $item.id)
     <tr class="bgc-h-default-l3 ">
         <td style="padding-left: 40px;">
-            <label><input type="checkbox" name="category" onclick="getcat();" id="${subitem.category_name}" value="${subitem.id}" #foreach($cat in $cats) #if($cat.category_id == $subitem.id) checked  #end #end> ${subitem.category_name}</label>
+            <label><input type="checkbox" name="category" onclick="getcat();" id="${subitem.category_name}" value="${subitem.id}" #foreach($cat in $cats) #if($cat.id == $subitem.id) checked  #end #end> ${subitem.category_name}</label>
         </td>
 
     </tr>

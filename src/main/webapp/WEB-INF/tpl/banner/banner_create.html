@@ -1,0 +1,97 @@
+</div>
+<div class="col-sm-3">
+    <div class="search_box pull-right">
+        <form name="form1" method="get" class="form-inline float-right">
+            <input type="text" name="s_keyword" class="form-control">
+            <input class="btn btn-default get" type="submit" value="Search" style="width: 50px;margin-top: 0;">
+        </form>
+        ${form_script}
+    </div>
+</div>
+</div>
+</div>
+</div><!--/header-bottom-->
+</header><!--/header-->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-9">
+                <form class="forms-sample" name="form1" method="post" enctype="multipart/form-data">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label text-sm-right pr-0">Product title</label>
+                        <div class="col-sm-3">
+                            <input type="text" name="title" >
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label text-sm-right pr-0">Product explanation</label>
+                        <div class="col-sm-8"><input type="text" name="explanation"></div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label text-sm-right pr-0">Product picture</label>
+                        <div class="col-sm-8"><input type="file" name="att_file"></div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label text-sm-right pr-0">Price</label>
+                        <div class="col-sm-8"> <input type="text" name="price"><br></div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label text-sm-right pr-0">Choose category</label>
+                        <div class="col-sm-8"> <select id="cats" name="categoryid">
+                            <!--#foreach($item in $cat)-->
+                            <option value="${item.id}">${item.category_name}</option>
+                            <!--#end-->
+                        </select></div>
+                    </div>
+                    <div class="form-group row">
+                        <div class=" col-sm-10" style="text-align: right;">
+                            <input type="submit" value="Add banner product" class="btn btn-primary" style="margin-top: 0;">
+                            <input type="button" value="Cancel" class="btn btn-default" onclick="history.go(-1)">
+                        </div>
+                    </div>
+                </form>
+                ${form_script}
+            </div>
+        </div>
+        <hr class="border-double my-4 brc-secondary-l2" />
+        <div style="display: flex;justify-content: start;width: 100%;">
+            <table style="width: 88%">
+                <colgroup>
+                    <col width="20%">
+                    <col width="20%">
+                    <col width="40%">
+                    <col width="20%">
+                    <col width="10%">
+                    <col width="25%">
+                </colgroup>
+                <thead>
+                <th>title</th>
+                <th>Category</th>
+                <th>Explanation</th>
+                <th>Picture</th>
+                <th>Price</th>
+                <th>Actions</th>
+                </thead>
+                <tbody>
+                <!--#foreach($item in $list)-->
+                <tr>
+                    <td>${item.title}</td>
+                    <td>${item.category_name}</td>
+                    <td>${item.explanation}</td>
+                    <td>${item.att_file_name}</td>
+                    <td>${item.price}</td>
+                    <td> <div style="width: 100%;display: flex; justify-content: space-between">
+                        <a href="banner_delete.jsp?id=${item.id}" class="btn btn-default get">delete</a>
+                    </div></td>
+                </tr>
+                <!--#end-->
+                </tbody>
+            </table>
+        </div>
+        <div class="row" style="display: flex; justify-content: center;">
+            <div class="float-right">$pagebar</div>
+        </div>
+    </div>
+</section>

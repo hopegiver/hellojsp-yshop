@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %><%@include file="init.jsp"%><%
     UserDao userDao = new UserDao();
     String id = userId;
-    DataSet user = userDao.find("user_id = " + id);
+    DataSet user = userDao.find("id = " + id);
     if(!user.next()){
         m.jsError("user not found ");
         return;
@@ -13,7 +13,7 @@
         userDao.item("name", f.get("username"));
         userDao.item("email" , f.get("email"));
         userDao.item("password", aes.encrypt(f.get("password")));
-        if(!userDao.update("user_id =" + id)){
+        if(!userDao.update("id =" + id)){
             m.jsError("account update error");
             return;
         }
