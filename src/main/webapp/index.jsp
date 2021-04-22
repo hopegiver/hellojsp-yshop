@@ -37,5 +37,6 @@
     p.setVar("isAdmin",isAdmin);
     p.setLayout("shop");
     p.setBody("user/index");
+    p.setVar("form_script", f.getScript());
     p.print();
 %>

@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %><%@include file="../init.jsp"%><%
     CategoryDao category = new CategoryDao();
+    f.addElement("keyword" , null , null);
     DataSet categorylist = category.find("status = '1'");
     DataSet tree = new DataSet();
     for(int i = 0 ; i< categorylist.size() ; i++){
@@ -23,6 +24,7 @@
     lm.setTable("tb_product t");
     lm.setFields("t.*");
     lm.addWhere("status = 1");
+    lm.addSearch("t.title, t.explanation", f.get("s_keyword"), "LIKE");
     int cat_id = m.reqInt("id");
     if(cat_id != 0){
     lm.addWhere("categoryid = " + cat_id );
@@ -33,5 +35,6 @@
     p.setBody("user/product_list");
     p.setVar("total_cnt", lm.getTotalNum());
     p.setVar("pagebar", lm.getPaging());
+    p.setVar("form_script", f.getScript());
     p.print();
 %>

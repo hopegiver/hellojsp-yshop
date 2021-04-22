@@ -3,5 +3,6 @@
     auth.save();
     auth.destroy();
     userId = null;
+
     m.redirect("index.jsp");
 %>
