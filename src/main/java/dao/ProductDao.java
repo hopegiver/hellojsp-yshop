@@ -19,4 +19,5 @@ public class ProductDao extends DataObject {
                 "tb_category a JOIN tb_product b ON b.categoryid = a.id " +
                 "WHERE b.status = 1 ORDER BY b.id DESC LIMIT " + limit);
     }
+
 }

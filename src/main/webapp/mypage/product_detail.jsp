@@ -1,27 +1,24 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %><%@include file="../init.jsp"%><%
-    ProductDao productDao = new ProductDao();
-    CategoryDao categoryDao = new CategoryDao();
+<%@ page contentType="text/html;charset=UTF-8" language="java" %><%@ include file="../init.jsp" %><%
 
-    int id = m.reqInt("id");
-    DataSet categories = categoryDao.find("status = 1");
-    while(categories.next()){
-        categories.put("pid", categories.getInt("parent_id") == 0 ? "" : categories.getInt("parent_id"));
-        categories.put("name", categories.get("category_name"));
-    }
+ProductDao productDao = new ProductDao();
+CategoryDao categoryDao = new CategoryDao();
 
-    if(id == 0){
-        m.jsError("id is null");
-        return;
-    }
-    DataSet product = productDao.getProduct(id);
+int id = m.reqInt("id");
+DataSet categories = categoryDao.getTree();
 
-    if(!product.next()){
-        m.jsError("product detail view failed");
-        return;
-    }
-    p.setVar("item",product);
-    p.setLoop("categories" , categories);
-    p.setLayout("shop");
-    p.setBody("user/product_detail");
-    p.print();
+if(id == 0){
+    m.jsError("id is null");
+    return;
+}
+DataSet product = productDao.getProduct(id);
+
+if(!product.next()){
+    m.jsError("product detail view failed");
+    return;
+}
+p.setLayout("shop");
+p.setBody("user/product_detail");
+p.setLoop("categories", categories);
+p.setVar("item", product);
+p.print();
 %>

@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %><%@include file="init.jsp"%><%
+<%@ page contentType="text/html;charset=UTF-8" language="java" %><%@ include file="init.jsp" %><%
 
 //Step 1
 BlogDao blogDao = new BlogDao();
@@ -19,7 +19,6 @@ if(m.isPost() && f.validate()) {
         m.delFile(f.uploadDir + "/" + blog.s("att_file_code"));
     }
     blogDao.item("status", -1);
-
     if(!blogDao.update("id = " + id)) {
         m.jsAlert("Error occurred(delete)");
         return;

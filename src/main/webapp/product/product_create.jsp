@@ -47,7 +47,7 @@ lm.setFields("a.* , b.*");
 lm.setListNum(5);
 lm.addSearch("title, explanation", f.get("s_keyword"), "LIKE");
 DataSet products =lm.getDataSet();
-DataSet cat = categoryDao.find("status = 1 ");
+DataSet cat = categoryDao.find("status = 1");
 
 p.setLayout("shop");
 p.setBody("product/product_add");

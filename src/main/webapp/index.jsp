@@ -6,11 +6,7 @@ f.addElement("keyword" , null , null);
 
 DataSet banner = productDao.find("is_banner = 1");
 DataSet products = productDao.find("status = 1","*","id DESC LIMIT 6 ");
-DataSet categories = categoryDao.find("status = 1");
-while(categories.next()){
-    categories.put("pid", categories.getInt("parent_id") == 0 ? "" : categories.getInt("parent_id"));
-    categories.put("name", categories.get("category_name"));
-}
+DataSet categories = categoryDao.getTree();
 p.setLayout("shop");
 if(isAdmin == 1)  p.setBody("admin/index");
 else              p.setBody("user/index");
