@@ -1,19 +1,16 @@
 <%@ page contentType="text/html; charset=utf-8" %><%@ include file="../init.jsp" %><%
 
-//Step1
+
 CategoryDao categoryDao = new CategoryDao();
 
-//Step2
+
 int id = m.reqInt("id");
 if(id == 0) { m.jsError("Primary Key is required"); return; }
 
-//Step3
+
 DataSet category = categoryDao.find("id = " + id);
 
 if(!category.next()) { m.jsError("No Data"); return; }
-
-
-//Step4
 
 category.put("category_name", m.htt(category.s("category_name")));
 
@@ -23,7 +20,7 @@ DataSet parent_info = categoryDao.find("id = " + category.s("parent_id"));
 
 if(!parent_info.next()) {
 category.put("parent_name", "None");
-}else{
+} else {
 category.put("parent_name", parent_info.s("category_name"));
 }
 

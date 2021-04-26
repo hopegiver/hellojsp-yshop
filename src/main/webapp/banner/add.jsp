@@ -1,10 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %><%@ include file="init.jsp" %><%
 
-//Step1
 CategoryDao categoryDao = new CategoryDao();
 ProductDao productDao = new ProductDao();
 
-//Step2
 f.addElement("keyword" , null, null);
 f.addElement("title", null, "required:'Y'");
 f.addElement("explanation", null, "required:true");
@@ -12,8 +10,7 @@ f.addElement("att_file", null, "required:'Y'");
 f.addElement("category_id" , null, "required: 'Y'" );
 f.addElement("price" , null, "required: 'Y'");
 
-//Step3
-if(m.isPost() && f.validate()){
+if(m.isPost() && f.validate()) {
     productDao.item("title", f.get("title"));
     productDao.item("explanation", f.get("explanation"));
     productDao.item("category_id", f.get("category_id"));
@@ -27,7 +24,7 @@ if(m.isPost() && f.validate()){
         productDao.item("att_file_name", f.getFileName("att_file"));
         productDao.item("att_file_code", attFile.getName());
     }
-    if(!productDao.insert()){
+    if(!productDao.insert()) {
         m.jsError("occured(insert)");
         return;
     }

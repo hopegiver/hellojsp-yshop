@@ -1,17 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %><%@ include file="init.jsp" %><%
 
-//Step1
 BlogDao blogDao = new BlogDao();
 
-//Step2
 f.addElement("keyword" , null , null);
 f.addElement("subject", null, "required:'Y'");
 f.addElement("content", null, "required:true");
 f.addElement("att_file", null, "required:'Y'");
 f.addElement("title" , null , "required: 'Y'" );
 
-//Step3
-if(m.isPost() && f.validate()){
+if(m.isPost() && f.validate()) {
 
     blogDao.item("subject", f.get("subject"));
     blogDao.item("content", f.get("content"));
@@ -27,12 +24,12 @@ if(m.isPost() && f.validate()){
         blogDao.item("att_file_code", attFile.getName());
     }
 
-    if(!blogDao.insert()){
+    if(!blogDao.insert()) {
         m.jsError("occured(insert)");
         return;
     }
 
-    m.redirect("index.jsp");
+    m.redirect("index_admin.jsp");
     return;
 }
 

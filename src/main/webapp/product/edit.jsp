@@ -1,14 +1,11 @@
 <%@ page contentType="text/html; charset=utf-8" %><%@ include file="init.jsp" %><%
 
-//Step1
 ProductDao productDao = new ProductDao();
 CategoryDao categoryDao = new CategoryDao();
 
-//Step2
 int id = m.reqInt("id");
 if(id == 0) { m.jsError("Primary Key is required"); return; }
 
-//Step3
 ListManager data = new ListManager();
 data.setRequest(request);
 data.setTable("tb_category a JOIN tb_product b ON b.category_id = a.id");
@@ -18,25 +15,23 @@ data.setFields("a.*, b.*");
 DataSet info = data.getDataSet();
 if(!info.next()) { m.jsError("No Data"); return; }
 
-//Step4
 f.addElement("price", info.s("price"), "title:'price'");
 f.addElement("title", info.s("title"), "required:'Y'");
 f.addElement("explanation", info.s("explanation"), "required:true");
 f.addElement("isbanner", info.s("is_banner"), null);
 f.addElement("att_file" , info.s("att_file_name") , null);
 f.addElement("category" , info.s("category_name"),"required:'Y'");
-//Step5
+
 if(m.isPost() && f.validate()) {
 
     productDao.item("title", f.get("title"));
     productDao.item("explanation", f.get("explanation"));
-    if(!f.get("category").equals(info.s("category_id"))){
+    if(!f.get("category").equals(info.s("category_id"))) {
         productDao.item("category_id",f.get("category"));
     }
-    if(f.get("isbanner") != null){
+    if(f.get("isbanner") != null) {
     productDao.item("is_banner", 1);
-    }
-    else {
+    } else {
         productDao.item("is_banner",0);
     }
     productDao.item("price", f.get("price"));

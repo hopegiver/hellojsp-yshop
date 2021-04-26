@@ -1,15 +1,13 @@
 <%@ page contentType="text/html; charset=utf-8" %><%@ include file="../init.jsp" %><%
 
-//Step1
 CategoryDao categoryDao = new CategoryDao();
 
-//Step2
 f.addElement("keyword" , null , null);
 f.addElement("parent_id", null, "title:'parent_id'");
 f.addElement("category_name", null, "title:'category_name', required:true");
 f.addElement("description", null, "title:'description'");
 f.addElement("sort", null, "title:'sort'");
-//Step3
+
 if(m.isPost() && f.validate()) {
 
 	categoryDao.item("parent_id", f.get("parent_id"));
@@ -26,13 +24,12 @@ if(m.isPost() && f.validate()) {
 	return;
 }
 
-// category list
-	ListManager catlist = new ListManager();
-	catlist.setRequest(request);
-	catlist.setTable("tb_category t");
-	catlist.setListNum(5);
-	catlist.addWhere("status = 1");
-	catlist.addSearch("category_name, description", f.get("s_keyword"), "LIKE");
+ListManager catlist = new ListManager();
+catlist.setRequest(request);
+catlist.setTable("tb_category t");
+catlist.setListNum(5);
+catlist.addWhere("status = 1");
+catlist.addSearch("category_name, description", f.get("s_keyword"), "LIKE");
 
 p.setLayout("shop");
 p.setBody("category/add");

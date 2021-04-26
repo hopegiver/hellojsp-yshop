@@ -1,18 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %><%@ include file="init.jsp" %><%
 
-//Step 1
 BlogDao blogDao = new BlogDao();
-//Step2
+
 int id = m.reqInt("id");
 if(id == 0) { m.jsError("Primary Key is required"); return; }
 
-//Step3
 DataSet blog = blogDao.find("id = " + id);
 if(!blog.next()) { m.jsError("No Data"); return; }
 
 f.addElement("id", blog.s("id"), "title:'ID', required:true");
 
-//Step5
 if(m.isPost() && f.validate()) {
 
     if(!"".equals(blog.s("att_file_code"))) {
@@ -24,10 +21,9 @@ if(m.isPost() && f.validate()) {
         return;
     }
 
-    m.redirect("add.jsp");
+    m.redirect("index_admin.jsp");
     return;
 }
-//Step6
 p.setLayout("shop");
 p.setBody("category/delete");
 p.setVar("info", blog);

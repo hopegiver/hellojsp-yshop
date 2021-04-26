@@ -1,24 +1,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %><%@include file="../init.jsp"%><%
 
-//step
+
 BlogDao blogDao = new BlogDao();
 CommentDao commentDao = new CommentDao();
 CategoryDao categoryDao = new CategoryDao();
 int id = m.reqInt("id");
-if(id == 0){
-    m.jsError("id is null");
-    return;
-}
+if(id == 0) { m.jsError("id is null");return; }
 
 f.addElement("comment", null, "required:'Y'");
-if(m.isPost() && f.validate()){
+if(m.isPost() && f.validate()) {
     commentDao.item("blog_id" , id);
     commentDao.item("comment" , f.get("comment"));
     commentDao.item("reg_date" , m.time("yyyy-MM-dd"));
-    if(userId != null){
+    if(userId != null) {
         commentDao.item("reg_date" , userId);
     }
-    if(!commentDao.insert()){
+    if(!commentDao.insert()) {
         m.jsError("add comment error");
         return;
     }
@@ -27,7 +24,7 @@ if(m.isPost() && f.validate()){
 }
 DataSet categories = categoryDao.getTree();
 DataSet blog = blogDao.find("id = " + id);
-if(!blog.next()){
+if(!blog.next()) {
     m.jsError("detail view failed");
     return;
 }
