@@ -1,0 +1,55 @@
+<div class="mainmenu pull-left">
+    <ul class="nav navbar-nav collapse navbar-collapse">
+        <li><a href="/index.jsp" >Home</a></li>
+        <li><a href="/product/product_list.jsp" >Product</a></li>
+        <li><a href="/product/blog_list.jsp"class="active">Blog</a></li>
+    </ul>
+</div>
+</div>
+<div class="col-sm-3">
+    <div class="search_box pull-right">
+        <input type="text" placeholder="Search"/>
+    </div>
+</div>
+</div>
+</div>
+</div><!--/header-bottom-->
+</header><!--/header-->
+<section>
+    <div class="container">
+        <div class="page-content container">
+            <div class="page-header">
+                <h1 class="page-title text-primary-d2">
+                    ${pagetitle}
+                </h1>
+            </div>
+        <div class="row">
+            <div class="col-9">
+            <form method="post" name="form1">
+                <div class="form-group row">
+                    <label class=" col-md-3">User name:</label>
+                    <div class="col-md-9">
+                        <input type="text" name="username" style="width: inherit;border-radius: 5px;">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class=" col-md-3">Email:</label>
+                    <div class="col-md-9">
+                        <input type="text" name="email" style="width: inherit;border-radius: 5px;">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class=" col-md-3">Password:</label>
+                    <div class="col-md-9">
+                        <input type="password" name="password" style="width: inherit;border-radius: 5px;">
+                    </div>
+                </div>
+                <input type="submit" value="edit" class="btn btn-default get">
+                <a href="delete.jsp?id=${user.id}" class="btn btn-default get"> Delete</a>
+            </form>
+            ${form_script}
+            </div>
+        </div>
+            <hr class="border-double my-4 brc-secondary-l2" />
+    </div>
+</section>

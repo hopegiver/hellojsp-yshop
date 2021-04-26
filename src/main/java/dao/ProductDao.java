@@ -10,13 +10,13 @@ public class ProductDao extends DataObject {
 
     public DataSet getProduct(int id) {
         return  this.query("SELECT a.*, b.* FROM " +
-                "tb_category a JOIN tb_product b ON b.categoryid = a.id " +
+                "tb_category a JOIN tb_product b ON b.category_id = a.id " +
                 "WHERE b.status = 1 AND b.id = " + id );
     }
 
     public DataSet getProducts(int limit) {
         return  this.query("SELECT a.*, b.* FROM " +
-                "tb_category a JOIN tb_product b ON b.categoryid = a.id " +
+                "tb_category a JOIN tb_product b ON b.category_id = a.id " +
                 "WHERE b.status = 1 ORDER BY b.id DESC LIMIT " + limit);
     }
 

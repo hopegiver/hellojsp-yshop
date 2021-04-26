@@ -1,0 +1,97 @@
+<div class="mainmenu pull-left">
+    <ul class="nav navbar-nav collapse navbar-collapse">
+        <li><a href="/index.jsp" class="active" >Home</a></li>
+        <li><a href="/mypage/product_list.jsp" >Product</a></li>
+        <li><a href="/mypage/blog_list.jsp">Blog</a></li>
+    </ul>
+</div>
+</div>
+<div class="col-sm-3">
+</div>
+</div>
+</div>
+</div><!--/header-bottom-->
+</header><!--/header-->
+<section id="cart_items">
+    <div class="container">
+        <div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li class="active">Shopping Cart</li>
+            </ol>
+        </div>
+        <div class="table-responsive cart_info">
+            <table class="table table-condensed">
+                <thead>
+                <tr class="cart_menu">
+                    <td class="image">Item</td>
+                    <td class="description"></td>
+                    <td class="price">Price</td>
+                    <td class="quantity">Quantity</td>
+                    <td class="total">Total</td>
+                    <td></td>
+                </tr>
+                </thead>
+                <tbody>
+                <!--#foreach($item in $list)-->
+                <tr>
+                    <td class="cart_product">
+                        <a href=""><img src="/data/files/${item.att_file_code}" alt="" height="254px"></a>
+                    </td>
+                    <td class="cart_description">
+                        <h4><a href="">${item.title}</a></h4>
+                        <p>${item.explanation}</p>
+                    </td>
+                    <td class="cart_price">
+                        <p>$${item.price}</p>
+                    </td>
+                    <td class="cart_quantity">
+                        <div class="cart_quantity_button">
+                            <a class="cart_quantity_up" href=""> + </a>
+                            <input class="cart_quantity_input" type="text" name="quantity" value="${item.count}" autocomplete="off" size="2">
+                            <a class="cart_quantity_down" href=""> - </a>
+                        </div>
+                    </td>
+                    <td class="cart_total">
+                        <p class="cart_total_price">$${item.count}</p>
+                    </td>
+                    <td class="cart_delete">
+                        <a class="cart_quantity_delete" href="/cart/delete.jsp?id=${item.id}"><i class="fa fa-times"></i></a>
+                    </td>
+                </tr>
+
+                <!--#end-->
+                <!--#if($no_data)-->
+                <tr>
+                    <td colspan="6" style="text-align: center;">No products</td>
+                </tr>
+
+                <!--#end-->
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section> <!--/#cart_items-->
+
+<section id="do_action">
+    <div class="container">
+        <div class="heading">
+            <h3>What would you like to do next?</h3>
+            <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="chose_area">
+                    <form name="form1" method="post" class="form-horizontal" enctype="multipart/form-data">
+                        <input type="text" name="total_cost" value="${totalCost.total}">
+                            <input type="text" name="zipcode">
+                        <input type="submit" class="btn btn-default get" value="Payment">
+                    </form>
+                    ${form_script}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section><!--/#do_action-->
