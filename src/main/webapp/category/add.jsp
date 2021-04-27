@@ -23,15 +23,12 @@ if(m.isPost() && f.validate()) {
 	m.redirect("index.jsp");
 	return;
 }
-ListManager parentList = new ListManager();
-parentList.setRequest(request);
-parentList.setTable("tb_category");
-parentList.addWhere("status = 1");
-parentList.addWhere("parent_id = 0");
+DataSet parentCategories = categoryDao.find("status = 1");
+DataSet treeCategories = categoryDao.getTreeSet(parentCategories);
 
 p.setLayout("shop");
 p.setBody("category/add");
-p.setLoop("parent" , parentList.getDataSet());
+p.setLoop("parent" , treeCategories);
 p.setVar("page_title", "Category");
 p.setVar("page_action", "add");
 p.setVar("userId", userId);

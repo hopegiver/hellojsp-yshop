@@ -69,7 +69,7 @@
                     <h2>Category</h2>
                     <div class="panel-group category-products">
                         <div class="card-body bgc-white brc-default-m2" style="padding-left: 80px;">
-                            <div class="jqtree" id="id-jqtree-categories"></div>
+                            <div class="jqtree tree-dotted" id="id-jqtree-categories"></div>
                         </div>
                     </div><!--/category-products-->
                 </div>
@@ -123,7 +123,7 @@
 <script>
 
     var treeview2 = new TreeView({
-        autoOpen : false,
+        autoOpen : true,
         onClick : function(node) {
             window.location = "product/index_user.jsp?cid=" + node.id;
         }

@@ -29,11 +29,11 @@ if(m.isPost() && f.validate()) {
 	return;
 }
 
-DataSet parentCategories = categoryDao.find("parent_id = 0");
-
+DataSet parentCategories = categoryDao.find("status = 1");
+DataSet treeCategories = categoryDao.getTreeSet(parentCategories);
 p.setLayout("shop");
 p.setBody("category/edit");
-p.setLoop("list", parentCategories);
+p.setLoop("list", treeCategories);
 p.setVar("page_title", "Category");
 p.setVar("page_action", "update");
 p.setVar("userId", userId);
