@@ -13,7 +13,7 @@ if(m.isPost() && f.validate()) {
     commentDao.item("comment" , f.get("comment"));
     commentDao.item("reg_date" , m.time("yyyy-MM-dd"));
     if(userId != null) {
-        commentDao.item("reg_date" , userId);
+        commentDao.item("reg_user" , userId);
     }
     if(!commentDao.insert()) {
         m.jsError("add comment error");

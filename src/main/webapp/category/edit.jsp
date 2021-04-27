@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" %><%@ include file="../init.jsp" %><%
+<%@ page contentType="text/html; charset=utf-8" %><%@ include file="init.jsp" %><%
 
 CategoryDao categoryDao = new CategoryDao();
 
@@ -8,10 +8,10 @@ if(id == 0) { m.jsError("Primary Key is required"); return; }
 DataSet info = categoryDao.find("id = " + id);
 if(!info.next()) { m.jsError("No Data"); return; }
 
-f.addElement("parent_id", info.s("parent_id"), "title:'parent_id'");
-f.addElement("category_name", info.s("category_name"), "title:'category_name', required:true");
-f.addElement("description", info.s("description"), "title:'description'");
-f.addElement("sort", info.s("sort"), "title:'sort'");
+f.addElement("parent_id", info.s("parent_id"), null);
+f.addElement("category_name", info.s("category_name"), "title:'category_name', required:'Y'");
+f.addElement("description", info.s("description"), null);
+f.addElement("sort", info.s("sort"), null);
 
 if(m.isPost() && f.validate()) {
 
@@ -29,24 +29,15 @@ if(m.isPost() && f.validate()) {
 	return;
 }
 
-ListManager lm = new ListManager();
-lm.setRequest(request);
-lm.setTable("tb_category");
-lm.setFields("*");
-lm.addWhere("status != -1");
-lm.addWhere("parent_id = 0");
-lm.setOrderBy("id DESC");
-
-DataSet list = lm.getDataSet();
+DataSet parentCategories = categoryDao.find("parent_id = 0");
 
 p.setLayout("shop");
 p.setBody("category/edit");
+p.setLoop("list", parentCategories);
 p.setVar("page_title", "Category");
 p.setVar("page_action", "update");
 p.setVar("userId", userId);
-p.setVar("list", list);
 p.setVar("info", info);
 p.setVar("form_script", f.getScript());
 p.print();
-
 %>

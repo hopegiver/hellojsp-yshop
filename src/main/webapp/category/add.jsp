@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" %><%@ include file="../init.jsp" %><%
+<%@ page contentType="text/html; charset=utf-8" %><%@ include file="init.jsp" %><%
 
 CategoryDao categoryDao = new CategoryDao();
 
@@ -23,16 +23,15 @@ if(m.isPost() && f.validate()) {
 	m.redirect("index.jsp");
 	return;
 }
-
-ListManager catlist = new ListManager();
-catlist.setRequest(request);
-catlist.setTable("tb_category t");
-catlist.setListNum(5);
-catlist.addWhere("status = 1");
-catlist.addSearch("category_name, description", f.get("s_keyword"), "LIKE");
+ListManager parentList = new ListManager();
+parentList.setRequest(request);
+parentList.setTable("tb_category");
+parentList.addWhere("status = 1");
+parentList.addWhere("parent_id = 0");
 
 p.setLayout("shop");
 p.setBody("category/add");
+p.setLoop("parent" , parentList.getDataSet());
 p.setVar("page_title", "Category");
 p.setVar("page_action", "add");
 p.setVar("userId", userId);

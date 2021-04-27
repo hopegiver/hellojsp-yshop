@@ -1,8 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %><%@ include file="init.jsp" %><%
 
 UserDao userDao = new UserDao();
-String id = userId;
-DataSet user = userDao.find("id = " + id);
+DataSet user = userDao.find("id = " + userId);
 if(!user.next()) {
     m.jsError("user not found ");
     return;
@@ -14,7 +13,7 @@ if(m.isPost() && f.validate()) {
     userDao.item("name", f.get("username"));
     userDao.item("email" , f.get("email"));
     userDao.item("password", aes.encrypt(f.get("password")));
-    if(!userDao.update("id = " + id)) {
+    if(!userDao.update("id = " + userId)) {
         m.jsError("account update error");
         return;
     }
@@ -24,6 +23,6 @@ p.setLayout("shop");
 p.setBody("user/edit");
 p.setVar("form_script", f.getScript());
 p.setVar("user", user);
-p.setVar("pagetitle", "Account");
+p.setVar("page_title", "Account");
 p.print();
 %>

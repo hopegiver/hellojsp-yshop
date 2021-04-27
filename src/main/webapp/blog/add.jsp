@@ -4,7 +4,7 @@ BlogDao blogDao = new BlogDao();
 
 f.addElement("keyword" , null , null);
 f.addElement("subject", null, "required:'Y'");
-f.addElement("content", null, "required:true");
+f.addElement("content", null, "required:'Y'");
 f.addElement("att_file", null, "required:'Y'");
 f.addElement("title" , null , "required: 'Y'" );
 

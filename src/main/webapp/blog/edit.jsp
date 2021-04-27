@@ -10,7 +10,7 @@ if(!blog.next()) { m.jsError("No Data"); return; }
 
 f.addElement("subject", blog.s("subject"),  "required:'Y'");
 f.addElement("title", blog.s("content_title"), "required:'Y'");
-f.addElement("content", blog.s("content"), "required:true");
+f.addElement("content", blog.s("content"), "required:'Y'");
 f.addElement("att_file" , blog.s("att_file_name") , null);
 
 
@@ -25,7 +25,7 @@ if(m.isPost() && f.validate()) {
         blogDao.item("att_file_code", attFile.getName());
     }
     blogDao.item("update_date",m.time("yyyyMMddHHmmss"));
-    blogDao.item("update_user",auth.get("user_id"));
+    blogDao.item("update_user",userId);
     if(!blogDao.update("id = " + id)) {
         m.jsAlert("Error occurred(update)");
         return;

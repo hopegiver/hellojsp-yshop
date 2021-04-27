@@ -13,15 +13,16 @@ if(!user.next()) {
     return;
 }
 
-f.addElement("id",user.s("id") , "required:true");
+f.addElement("id",user.s("id") , "required:'Y'");
 
 if(m.isPost() && f.validate()) {
     userDao.item("status" , "-1");
-    if(!userDao.update("id = " + id)){
+    if(!userDao.update("id = " + id)) {
         m.jsAlert("user delete error");
         return;
     }
     m.redirect("/logout.jsp");
+    return;
 }
 p.setLayout("shop");
 p.setBody("user/delete");

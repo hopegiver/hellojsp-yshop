@@ -5,7 +5,7 @@ ProductDao productDao = new ProductDao();
 
 f.addElement("keyword" , null, null);
 f.addElement("title", null, "required:'Y'");
-f.addElement("explanation", null, "required:true");
+f.addElement("explanation", null, "required:'Y'");
 f.addElement("att_file", null, "required:'Y'");
 f.addElement("category_id" , null, "required: 'Y'" );
 f.addElement("price" , null, "required: 'Y'");
@@ -32,11 +32,11 @@ if(m.isPost() && f.validate()) {
     return;
 }
 
-DataSet cat = categoryDao.find("status = 1");
+DataSet categories = categoryDao.find("status = 1");
 
 p.setLayout("shop");
 p.setBody("banner/add");
-p.setLoop("cat" , cat);
+p.setLoop("cat" , categories);
 p.setVar("form_script" , f.getScript());
 p.print();
 %>

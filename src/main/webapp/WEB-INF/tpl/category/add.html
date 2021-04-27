@@ -25,7 +25,7 @@
 							<select name="parent_id" class="form-control">
 								<option value="0">Select</option>
 								<!--#foreach($p in $parent)-->
-								<option value="${item.id}">${item.category_name}</option>
+								<option value="${p.id}">${p.category_name}</option>
 								<!--#end-->
 							</select>
 
@@ -58,39 +58,5 @@
 
 
 		<hr class="border-double my-4 brc-secondary-l2" />
-		<div style="display: flex;justify-content: start;width: 100%;">
-		<table style="width: 60%">
-			<colgroup>
-				<col width="20%">
-				<col width="40%">
-				<col width="15%">
-				<col width="10%">
-			</colgroup>
-			<thead>
-				<th>Category name</th>
-				<th>Description</th>
-				<th>Register Date</th>
-				<th>Actions</th>
-			</thead>
-			<tbody>
-			<!--#foreach($item in $categorylist)-->
-			<tr>
-				<td>${item.category_name}</td>
-				<td>${item.description}</td>
-				<td>${item.reg_date}</td>
-				<td>
-					<div style="width: 100%;display: flex; justify-content: space-between">
-						<a href="category_edit.jsp?id=${item.id}" class="btn btn-default get">edit</a>
-						<a href="category_delete.jsp?id=${item.id}" class="btn btn-default get">delete</a>
-					</div>
-				</td>
-			</tr>
-			<!--#end-->
-			</tbody>
-		</table>
-		</div>
-		<div class="row" style="display: flex; justify-content: center;">
-			<div class="float-right">$pagebar</div>
-		</div>
 	</div>
 </section>

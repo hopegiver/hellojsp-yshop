@@ -1,12 +1,12 @@
 <%@ page contentType="text/html; charset=utf-8" %><%@ include file="../init.jsp" %><%
 
 //Step1
-CategoryDao category = new CategoryDao();
+CategoryDao categoryDao = new CategoryDao();
 
 //Step2
-DataSet catInfo = category.find("status != -1 AND parent_id = 0", "*", "sort");
+DataSet catInfo = categoryDao.find("status != -1 AND parent_id = 0", "*", "sort");
 
-DataSet subCat = category.find("status != -1 AND parent_id != 0", "*", "sort");
+DataSet subCat = categoryDao.find("status != -1 AND parent_id != 0", "*", "sort");
 
 while(subCat.next()) {
     subCat.put("reg_date", m.time("yyyy-MM-dd", subCat.s("reg_date")));
@@ -19,26 +19,26 @@ while(catInfo.next()) {
 int id = m.reqInt("id");
 int del = m.reqInt("del");
 
-DataSet info = category.find("id = " + id);
+DataSet category = categoryDao.find("id = " + id);
 if(id != 0) {
     if(del != 0){
-        category.item("status", -1);
-        category.update("id = " + id);
+        categoryDao.item("status", -1);
+        categoryDao.update("id = " + id);
         m.redirect("index.jsp");
         return;
     }else{
-        if(!info.next()) { m.jsError("No Data"); return; }
-        f.addElement("parent_id", info.s("parent_id"), "title:'parent_id'");
-        f.addElement("category_name", info.s("category_name"), "title:'category_name', required:true");
-        f.addElement("description", info.s("description"), "title:'description'");
-        f.addElement("sort", info.s("sort"), "title:'sort'");
+        if(!category.next()) { m.jsError("No Data"); return; }
+        f.addElement("parent_id", category.s("parent_id"), "title:'parent_id'");
+        f.addElement("category_name", category.s("category_name"), "title:'category_name', required:true");
+        f.addElement("description", category.s("description"), "title:'description'");
+        f.addElement("sort", category.s("sort"), "title:'sort'");
 
         if(m.isPost() && f.validate()) {
-            category.item("parent_id", f.get("parent_id"));
-            category.item("category_name", f.get("category_name"));
-            category.item("description", f.get("description"));
-            category.item("sort", f.get("sort"));
-            if(!category.update("id = " + id)) {
+            categoryDao.item("parent_id", f.get("parent_id"));
+            categoryDao.item("category_name", f.get("category_name"));
+            categoryDao.item("description", f.get("description"));
+            categoryDao.item("sort", f.get("sort"));
+            if(!categoryDao.update("id = " + id)) {
                 m.jsAlert("Error occurred(update)");
                 return;
             }
@@ -46,8 +46,8 @@ if(id != 0) {
             return;
         }
         if(m.isPost() && f.validate()) {
-            category.item("status", -1);
-            if(!category.update("id = " + id)) {
+            categoryDao.item("status", -1);
+            if(!categoryDao.update("id = " + id)) {
                 m.jsAlert("Error occurred(delete)");
                 return;
             }
@@ -63,15 +63,15 @@ if(id != 0) {
 
     if(m.isPost() && f.validate()) {
 
-        category.item("parent_id", f.get("parent_id"));
-        category.item("category_name", f.get("category_name"));
-        category.item("description", f.get("description"));
-        category.item("reg_date", m.time("yyyyMMddHHmmss"));
-        category.item("sort", f.get("sort"));
-        category.item("status", 1);
+        categoryDao.item("parent_id", f.get("parent_id"));
+        categoryDao.item("category_name", f.get("category_name"));
+        categoryDao.item("description", f.get("description"));
+        categoryDao.item("reg_date", m.time("yyyyMMddHHmmss"));
+        categoryDao.item("sort", f.get("sort"));
+        categoryDao.item("status", 1);
 
             //blog.setDebug(out);
-        if(!category.insert()) {
+        if(!categoryDao.insert()) {
             m.jsError(" occurred(insert)");
             return;
         }
@@ -92,7 +92,7 @@ p.setBody("category/index");
 p.setVar("id", id);
 p.setLoop("list", catInfo);
 p.setLoop("sublist", subCat);
-p.setVar("info", info);
+p.setVar("info", category);
 p.setLoop("parent", catInfo);
 p.setVar("userId", userId);
 p.setVar("form_script", f.getScript());

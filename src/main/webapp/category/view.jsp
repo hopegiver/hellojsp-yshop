@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" %><%@ include file="../init.jsp" %><%
+<%@ page contentType="text/html; charset=utf-8" %><%@ include file="init.jsp" %><%
 
 
 CategoryDao categoryDao = new CategoryDao();
@@ -31,5 +31,4 @@ p.setVar("page_action", "read");
 p.setVar("userId", userId);
 p.setVar("info", category);
 p.print();
-
 %>

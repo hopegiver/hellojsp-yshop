@@ -8,7 +8,7 @@ if(id == 0) { m.jsError("Primary Key is required"); return; }
 DataSet product = productDao.find("id = " + id);
 if(!product.next()) { m.jsError("No Data"); return; }
 
-f.addElement("id", product.s("id"), "title:'ID', required:true");
+f.addElement("id", product.s("id"), "title:'ID', required:'Y'");
 
 
 if(m.isPost() && f.validate()) {

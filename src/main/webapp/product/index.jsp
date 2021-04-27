@@ -1,7 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" %><%@ include file="init.jsp" %><%
 
 CategoryDao categoryDao = new CategoryDao();
-ProductDao productDao = new ProductDao();
 
 ListManager lm = new ListManager();
 lm.setRequest(request);
@@ -11,11 +10,11 @@ lm.setFields("a.* , b.*");
 lm.setListNum(5);
 lm.addSearch("title, explanation", f.get("s_keyword"), "LIKE");
 DataSet products =lm.getDataSet();
-DataSet cat = categoryDao.find("status = 1");
+DataSet categories = categoryDao.find("status = 1");
 
 p.setLayout("shop");
 p.setBody("product/index");
-p.setLoop("cat" , cat);
+p.setLoop("cat" , categories);
 p.setLoop("list" , products);
 p.setVar("total_cnt", lm.getTotalNum());
 p.setVar("pagebar", lm.getPaging());

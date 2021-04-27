@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %><%@ include file="init.jsp" %><%
 
 CategoryDao categoryDao = new CategoryDao();
-ProductDao productDao = new ProductDao();
 
 ListManager lm = new ListManager();
 lm.setRequest(request);

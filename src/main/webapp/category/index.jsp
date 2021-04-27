@@ -1,20 +1,17 @@
-<%@ page contentType="text/html; charset=utf-8" %><%@ include file="../init.jsp" %><%
+<%@ page contentType="text/html; charset=utf-8" %><%@ include file="init.jsp" %><%
 
-
-CategoryDao categoryDao = new CategoryDao();
-
-ListManager catlist = new ListManager();
-catlist.setRequest(request);
-catlist.setTable("tb_category t");
-catlist.setListNum(5);
-catlist.addWhere("status = 1");
-catlist.addSearch("category_name, description", f.get("s_keyword"), "LIKE");
+ListManager catList = new ListManager();
+catList.setRequest(request);
+catList.setTable("tb_category t");
+catList.setListNum(5);
+catList.addWhere("status = 1");
+catList.addSearch("category_name, description", f.get("s_keyword"), "LIKE");
 
 p.setLayout("shop");
 p.setBody("category/index");
-p.setLoop("category_list" , catlist.getDataSet());
-p.setVar("total_cnt", catlist.getTotalNum());
-p.setVar("pagebar", catlist.getPaging());
+p.setLoop("category_list" , catList.getDataSet());
+p.setVar("total_cnt", catList.getTotalNum());
+p.setVar("pagebar", catList.getPaging());
 p.setVar("page_title", "Category");
 p.setVar("page_action", "List");
 p.setVar("userId", userId);

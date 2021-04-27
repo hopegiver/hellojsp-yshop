@@ -8,7 +8,7 @@ if(id == 0) { m.jsError("Primary Key is required"); return; }
 DataSet blog = blogDao.find("id = " + id);
 if(!blog.next()) { m.jsError("No Data"); return; }
 
-f.addElement("id", blog.s("id"), "title:'ID', required:true");
+f.addElement("id", blog.s("id"), "title:'ID', required:'Y'");
 
 if(m.isPost() && f.validate()) {
 
