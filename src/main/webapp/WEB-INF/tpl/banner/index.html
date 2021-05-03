@@ -3,7 +3,7 @@
     <div class="search_box pull-right">
         <form name="form1" method="get" class="form-inline float-right">
             <input type="text" name="s_keyword" class="form-control">
-            <input class="btn btn-default get" type="submit" value="Search" style="width: 50px;margin-top: 0;">
+            <input class="btn btn-default get" type="submit" value="${msg.search}" style="width: 50px;margin-top: 0;">
         </form>
         ${form_script}
     </div>
@@ -16,7 +16,7 @@
     <div class="container">
         <div class="row">
             <div class="col-9">
-                <a href="add.jsp" class="btn btn-default get">New Banner</a>
+                <a href="add.jsp" class="btn btn-default get">${msg.new} ${msg.banner}</a>
             </div>
         </div>
         <hr class="border-double my-4 brc-secondary-l2" />
@@ -31,12 +31,12 @@
                     <col width="25%">
                 </colgroup>
                 <thead>
-                <th>title</th>
-                <th>Category</th>
-                <th>Explanation</th>
-                <th>Picture</th>
-                <th>Price</th>
-                <th>Actions</th>
+                <th>${msg.title}</th>
+                <th>${msg.category}</th>
+                <th>${msg.explanation}</th>
+                <th>${msg.picture}</th>
+                <th>${msg.price}</th>
+                <th>${msg.actions}</th>
                 </thead>
                 <tbody>
                 <!--#foreach($item in $list)-->
@@ -47,7 +47,7 @@
                     <td>${item.att_file_name}</td>
                     <td style="text-align: center;">${item.price}</td>
                     <td> <div style="width: 100%;display: flex; justify-content: space-between">
-                        <a href="delete.jsp?id=${item.id}" class="btn btn-default get">delete</a>
+                        <a href="delete.jsp?id=${item.id}" class="btn btn-default get">${msg.delete}</a>
                     </div></td>
                 </tr>
                 <!--#end-->

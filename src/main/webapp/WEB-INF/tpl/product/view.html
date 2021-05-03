@@ -1,14 +1,14 @@
 <div class="mainmenu pull-left">
     <ul class="nav navbar-nav collapse navbar-collapse">
-        <li><a href="/index.jsp" >Home</a></li>
-        <li><a href="/product/index_user.jsp" class="active">Product</a></li>
-        <li><a href="/product/index_user.jsp">Blog</a></li>
+        <li><a href="/index.jsp" >${msg.home}</a></li>
+        <li><a href="/product/index_user.jsp" class="active">${msg.product}</a></li>
+        <li><a href="/product/index_user.jsp">${msg.blog}</a></li>
     </ul>
 </div>
 </div>
 <div class="col-sm-3">
     <div class="search_box pull-right">
-        <input type="text" placeholder="Search"/>
+        <input type="text" placeholder="${msg.search}"/>
     </div>
 </div>
 </div>
@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-sm-3">
                 <div class="left-sidebar">
-                    <h2>Category</h2>
+                    <h2>${msg.category}</h2>
                     <div class="panel-group category-products" id="accordian"><!--category-productsr-->
                         <div class="card-body bgc-white brc-default-m2" style="padding-left: 80px;">
                             <div class="jqtree" id="id-jqtree-categories"></div>
@@ -34,7 +34,7 @@
                     <div class="col-sm-5">
                         <div class="view-product">
                             <img src="/data/files/${item.att_file_code}" alt="" />
-                            <h3>ZOOM</h3>
+                            <h3>${msg.zoom}</h3>
                         </div>
                         <div id="similar-product" class="carousel slide" data-ride="carousel">
 
@@ -72,7 +72,6 @@
                         <div class="product-information"><!--/product-information-->
                             <img src="images/product-details/new.jpg" class="newarrival" alt="" />
                             <h2>${item.explanation}</h2>
-                            <p>Web ID: 1089772</p>
                             <img src="images/product-details/rating.png" alt="" />
                             <span>
 									<span>US $${item.price}</span>
@@ -80,12 +79,12 @@
 									<input type="text" value="3" />
 									<a href="/cart/add.jsp?id=${item.id}" class="btn btn-fefault cart">
 										<i class="fa fa-shopping-cart"></i>
-										Add to cart
+										${msg.add_cart}
 									</a>
 								</span>
-                            <p><b>Availability:</b> In Stock</p>
-                            <p><b>Condition:</b> New</p>
-                            <p><b>Category:</b>${item.category_id}</p>
+                            <p><b>${msg.availability}:</b> In Stock</p>
+                            <p><b>${msg.condition}:</b> ${msg.new}</p>
+                            <p><b>${msg.category}:</b>${item.category_id}</p>
                             <a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
                         </div><!--/product-information-->
                     </div>

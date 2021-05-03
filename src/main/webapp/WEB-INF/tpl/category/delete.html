@@ -1,7 +1,7 @@
 </div>
 <div class="col-sm-3">
     <div class="search_box pull-right">
-        <input type="text" placeholder="Search"/>
+        <input type="text" placeholder="${msg.search}"/>
     </div>
 </div>
 </div>
@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col-9">
                     <form name="form1" method="post">
-                        <div class="alert alert-danger" role="alert">Do you want to delete ${page_title}?</div>
+                        <div class="alert alert-danger" role="alert">${delete_question} ${page_title}?</div>
                         <input type="hidden" name="id">
                         <input type="button" value="Back" class="btn btn-default" onclick="history.go(-1)">
                         <input type="submit" value="Delete" class="btn btn-danger">

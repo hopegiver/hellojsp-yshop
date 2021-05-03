@@ -22,13 +22,13 @@
                 <div class="login-form"><!--login form-->
                     <h2>Login to your account</h2>
                     <form name="form1" method="post">
-                        <input type="email" name="email" placeholder="Email Address" />
-                        <input type="password" placeholder="password" name="password" />
+                        <input type="email" name="email" placeholder="${msg.email} Address" />
+                        <input type="password" placeholder="${msg.password}" name="password" />
                         <span>
-                            if you don't have account , click signup !
-							<a href="signup.jsp">Sign Up</a>
+                            ${msg.signup_question}
+							<a href="signup.jsp">${msg.signup}</a>
                         </span>
-                        <button type="submit" class="btn btn-default">Login</button>
+                        <button type="submit" class="btn btn-default">${msg.login}</button>
                     </form>
                 </div><!--/login form-->
             </div>

@@ -10,12 +10,12 @@ Page p = new Page();
 p.setWriter(out);
 p.setVar("m", m);
 Message msg = new Message();
-msg.setLocale(Locale.KOREAN);
 p.setVar("msg", msg);
 
 Json j = new Json();
 j.setWriter(out);
 
+String language = null;
 String userId = null;
 int isAdmin = 0;
 Boolean isLoggedin = false;
@@ -26,6 +26,14 @@ if(auth.validate()) {
 	userId = auth.get("user_id");
 	isAdmin = auth.getInt("is_admin");
 	isLoggedin = true;
+	language = "ko";
+}
+if("ko".equals(language)){
+	msg.setLocale(Locale.KOREAN);
+	msg.reload();
+} else if("en".equals(language)) {
+	msg.setLocale(Locale.ENGLISH);
+	msg.reload();
 }
 
 p.setVar("is_logged" , isLoggedin);

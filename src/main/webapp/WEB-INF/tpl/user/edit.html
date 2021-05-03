@@ -20,32 +20,32 @@
         <div class="page-content container">
             <div class="page-header">
                 <h1 class="page-title text-primary-d2">
-                    ${page_title}
+                    $msg.get('user_page_title')
                 </h1>
             </div>
         <div class="row">
             <div class="col-9">
             <form method="post" name="form1">
                 <div class="form-group row">
-                    <label class=" col-md-3">User name:</label>
+                    <label class=" col-md-3">${msg.user_page_title} ${msg.name}:</label>
                     <div class="col-md-9">
                         <input type="text" name="username" style="width: inherit;border-radius: 5px;">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class=" col-md-3">Email:</label>
+                    <label class=" col-md-3">${msg.email}:</label>
                     <div class="col-md-9">
                         <input type="text" name="email" style="width: inherit;border-radius: 5px;">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class=" col-md-3">Password:</label>
+                    <label class=" col-md-3">${msg.password}:</label>
                     <div class="col-md-9">
                         <input type="password" name="password" style="width: inherit;border-radius: 5px;">
                     </div>
                 </div>
-                <input type="submit" value="edit" class="btn btn-default get">
-                <a href="delete.jsp?id=${user.id}" class="btn btn-default get"> Delete</a>
+                <input type="submit" value="${msg.edit}" class="btn btn-default get">
+                <a href="delete.jsp?id=${user.id}" class="btn btn-default get"> ${msg.delete}</a>
             </form>
             ${form_script}
             </div>

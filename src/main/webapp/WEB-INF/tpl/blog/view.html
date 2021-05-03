@@ -1,8 +1,8 @@
 <div class="mainmenu pull-left">
     <ul class="nav navbar-nav collapse navbar-collapse">
-        <li><a href="/index.jsp" >Home</a></li>
-        <li><a href="/mypage/product_list.jsp" >Product</a></li>
-        <li><a href="/mypage/blog_list.jsp"class="active">Blog</a></li>
+        <li><a href="/index.jsp">${msg.home}</a></li>
+        <li><a href="/product/index_user.jsp">${msg.product}</a></li>
+        <li><a href="/blog/index_user.jsp" class="active">${msg.blog}</a></li>
     </ul>
 </div>
 </div>
@@ -20,9 +20,9 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="blog-post-area">
-                    <h2 class="title text-center">Blog Detail</h2>
+                    <h2 class="title text-center"> ${msg.blog_detail}</h2>
                     <div class="single-blog-post">
-                        <h3>${item.subject}</h3>
+                        <h3>${info.subject}</h3>
                         <div class="post-meta">
                             <ul>
                                 <li><i class="fa fa-user"></i>${info.name}</li>
@@ -50,7 +50,7 @@
 
                 <div class="rating-area">
                     <ul class="ratings">
-                        <li class="rate-this">Rate this item:</li>
+                        <li class="rate-this">${msg.rate_item}:</li>
                         <li>
                             <i class="fa fa-star color"></i>
                             <i class="fa fa-star color"></i>
@@ -58,7 +58,7 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                         </li>
-                        <li class="color">(6 votes)</li>
+                        <li class="color">(6 ${msg.votes})</li>
                     </ul>
                 </div><!--/rating-area-->
 
@@ -72,7 +72,6 @@
                                     <li><i class="fa fa-clock-o"></i>${item.reg_date}</li>
                                 </ul>
                                 <p> ${item.comment}</p>
-                                <a class="btn btn-primary" href=""><i class="fa fa-reply"></i>Replay</a>
                             </div>
                         </li>
                         <!--#end-->
@@ -87,7 +86,7 @@
                                 <span>*</span>
                                 <form name="form1" method="post">
                                     <textarea name="comment" rows="11"></textarea>
-                                    <input type="submit" value="post comment" class="btn btn-primary">
+                                    <input type="submit" value="${msg.post} ${msg.comment}" class="btn btn-primary">
                                 </form>
                             </div>
                         </div>

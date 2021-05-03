@@ -25,6 +25,7 @@ if(m.isPost() && f.validate()) {
         }
     }
 }
+
 p.setLayout("shop");
 p.setBody("user/login");
 p.setVar("form_script", f.getScript());

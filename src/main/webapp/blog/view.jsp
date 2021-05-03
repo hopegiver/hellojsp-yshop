@@ -23,7 +23,7 @@ if(m.isPost() && f.validate()) {
     return;
 }
 DataSet categories = categoryDao.getTree();
-DataSet blog = blogDao.find("id = " + id);
+DataSet blog = blogDao.getBlogView(id);
 if(!blog.next()) {
     m.jsError("detail view failed");
     return;

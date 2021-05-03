@@ -16,7 +16,7 @@
     <div class="container">
         <div class="row">
             <div class="col-9">
-               <a href="add.jsp" class="btn btn-default get">New Blog</a>
+               <a href="add.jsp" class="btn btn-default get">${msg.new} ${msg.blog}</a>
             </div>
         </div>
 
@@ -31,10 +31,10 @@
                     <col width="10%">
                 </colgroup>
                 <thead>
-                <th>Subject</th>
-                <th>Title</th>
-                <th>content</th>
-                <th>Actions</th>
+                <th>${msg.subject}</th>
+                <th>${msg.title}</th>
+                <th>${msg.content}</th>
+                <th>${msg.actions}</th>
                 </thead>
                 <tbody>
                 <!--#foreach($item in $list)-->
@@ -44,8 +44,8 @@
                     <td>${item.content}</td>
                     <td>
                         <div style="width: 100%;display: flex; justify-content: space-between">
-                            <a href="edit.jsp?id=${item.id}" class="btn btn-default get">edit</a>
-                            <a href="delete.jsp?id=${item.id}" class="btn btn-default get">delete</a>
+                            <a href="edit.jsp?id=${item.id}" class="btn btn-default get">${msg.edit}</a>
+                            <a href="delete.jsp?id=${item.id}" class="btn btn-default get">${msg.delete}</a>
                         </div>
                     </td>
                 </tr>
