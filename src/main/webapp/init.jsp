@@ -26,8 +26,9 @@ if(auth.validate()) {
 	userId = auth.get("user_id");
 	isAdmin = auth.getInt("is_admin");
 	isLoggedin = true;
-	language = auth.get("language");
+	//language = auth.get("language");
 }
+language = m.getCookie("language");
 if("ko".equals(language)){
 	msg.setLocale(Locale.KOREAN);
 	msg.reload();
