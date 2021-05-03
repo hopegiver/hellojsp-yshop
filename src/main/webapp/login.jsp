@@ -16,6 +16,7 @@ if(m.isPost() && f.validate()) {
                 auth.put("is_admin","1");
             else
                 auth.put("is_admin","0");
+                auth.put("language" , user.s("language"));
                 auth.save();
                 m.redirect("index.jsp");
                 return;

@@ -26,7 +26,7 @@ if(auth.validate()) {
 	userId = auth.get("user_id");
 	isAdmin = auth.getInt("is_admin");
 	isLoggedin = true;
-	language = "ko";
+	language = auth.get("language");
 }
 if("ko".equals(language)){
 	msg.setLocale(Locale.KOREAN);

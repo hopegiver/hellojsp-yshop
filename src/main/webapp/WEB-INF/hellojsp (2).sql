@@ -135,7 +135,7 @@ CREATE TABLE `tb_product` (
 
 LOCK TABLES `tb_product` WRITE;
 /*!40000 ALTER TABLE `tb_product` DISABLE KEYS */;
-INSERT INTO `tb_product` VALUES (42,'Dress','women red summer dress','girl3.jpg','394537c9a5bb88b6396dfe4c6f643a64e614caa3.jpg','1',7,99,'20210419112208','6',-1,NULL,NULL),(43,'casual clothes','women grey casual ','iframe2.png','9796caec45e932f01686f72ff6cba383119b0554.png',NULL,5,12,'20210419112606','6',-1,NULL,NULL),(44,'Dress','office black dress ','product4.jpg','e8fd5df3816a95df09d60b1cbf6315aec5b28459.jpg','1',7,7,'20210419112631','6',-1,'20210420180906','6'),(45,'Shirt-8','long spring shirt for women ','product1.jpg','2661684a216e03fdaba5bf68473824cf6b7cfdb5.jpg','1',7,5,'20210419112714','6',-1,'20210426113000','6'),(46,'title','explanation','Inked04 - question -05 tailbar-1_LI.jpg','075c23689d94bb2cd69de34c1ece465a8846846a.jpg','',11,11,'20210422170906','6',-1,NULL,NULL),(47,'title','explanation','Inked04 - question -05 tailbar-1_LI.jpg','5dc867529278c6e992af2ccb1e775ddf140895b4.jpg','1',8,11,'20210422180656','6',1,NULL,NULL),(48,'T-Shirt','women casual grey t-shirt','176354243_293334005713706_830942614311679033_n.jpg','c2ed4ae7b7b866b35ba8e9ea3e00e1e1dee966a2.jpg','1',7,5,'20210422200443','6',1,NULL,NULL),(49,'T-Shirt','women casual grey t-shirt','176354243_293334005713706_830942614311679033_n.jpg','d3909be9853feb9c86d2f0c791b81b79455c57ab.jpg','1',7,5,'20210422200452','6',1,NULL,NULL),(50,'T-Shirt','women casual grey t-shirt','176354243_293334005713706_830942614311679033_n.jpg','80730d87ca9d6c4ca3df237d7911747a9d1fa08f.jpg','1',7,5,'20210422200503','6',1,NULL,NULL),(51,'T-Shirt','women casual grey t-shirt','176354243_293334005713706_830942614311679033_n.jpg','13eccf454b687872617a94e71796c44bd4ecdf02.jpg','1',7,5,'20210422200512','6',1,NULL,NULL),(52,'banner','banner top ','Inked120095469_244577966992197_6017029482231978672_n_LI.jpg','4b6bba703146fb1a24f7917c6eac7b5b957276db.jpg','',14,9,'20210423101304','6',-1,NULL,NULL),(53,'My Test Banner','Lorem psum dolar sit amit ...','unnamed (1).jpg','c514bc3f8a697bfd0387ddc51250e998a0213a3d.jpg','',10,55,'20210426105454','6',-1,NULL,NULL);
+INSERT INTO `tb_product` VALUES (48,'T-Shirt','women casual grey t-shirt','176354243_293334005713706_830942614311679033_n.jpg','c2ed4ae7b7b866b35ba8e9ea3e00e1e1dee966a2.jpg','1',7,5,'20210422200443','6',1,NULL,NULL),(49,'T-Shirt','women casual grey t-shirt','176354243_293334005713706_830942614311679033_n.jpg','d3909be9853feb9c86d2f0c791b81b79455c57ab.jpg','1',7,5,'20210422200452','6',1,NULL,NULL),(50,'T-Shirt','women casual grey t-shirt','176354243_293334005713706_830942614311679033_n.jpg','80730d87ca9d6c4ca3df237d7911747a9d1fa08f.jpg','1',7,5,'20210422200503','6',1,NULL,NULL),(51,'T-Shirt','women casual grey t-shirt','176354243_293334005713706_830942614311679033_n.jpg','13eccf454b687872617a94e71796c44bd4ecdf02.jpg','1',7,5,'20210422200512','6',1,NULL,NULL);
 /*!40000 ALTER TABLE `tb_product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -212,6 +212,7 @@ CREATE TABLE `tb_user` (
   `email` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `role` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` int DEFAULT NULL,
+  `language` varchar(2) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -222,7 +223,7 @@ CREATE TABLE `tb_user` (
 
 LOCK TABLES `tb_user` WRITE;
 /*!40000 ALTER TABLE `tb_user` DISABLE KEYS */;
-INSERT INTO `tb_user` VALUES (1,'user test','pass',NULL,NULL,NULL),(3,'yanjk','pass',NULL,NULL,NULL),(5,'root','1234',NULL,NULL,NULL),(6,'admin y','XyM1rOLeyVUr++lfLJIa5g==','bbyykkdd1106@gmail.com','admin',1),(7,'yanjka test','XyM1rOLeyVUr++lfLJIa5g==','bbyykkdd1999@gmail.com','user',-1),(8,'yanjka','XyM1rOLeyVUr++lfLJIa5g==','yanjka1106@gmail.com','user',-1),(9,'test','XyM1rOLeyVUr++lfLJIa5g==','yanjka@g.com','user',1),(10,'yanjka','XyM1rOLeyVUr++lfLJIa5g==','bbyykkdd1999@gmail.com','user',1);
+INSERT INTO `tb_user` VALUES (1,'user test','pass',NULL,NULL,NULL,NULL),(3,'yanjk','pass',NULL,NULL,NULL,NULL),(5,'root','1234',NULL,NULL,NULL,NULL),(6,'admin y','XyM1rOLeyVUr++lfLJIa5g==','bbyykkdd1106@gmail.com','admin',1,'en'),(7,'yanjka test','XyM1rOLeyVUr++lfLJIa5g==','bbyykkdd1999@gmail.com','user',-1,NULL),(8,'yanjka','XyM1rOLeyVUr++lfLJIa5g==','yanjka1106@gmail.com','user',-1,NULL),(9,'test','XyM1rOLeyVUr++lfLJIa5g==','yanjka@g.com','user',1,'ko'),(10,'yanjka','XyM1rOLeyVUr++lfLJIa5g==','bbyykkdd1999@gmail.com','user',1,'en');
 /*!40000 ALTER TABLE `tb_user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -235,4 +236,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-28 11:06:16
+-- Dump completed on 2021-05-03 11:45:42
